@@ -15,6 +15,7 @@ import firebase from 'firebase';
 import { RFValue } from "react-native-responsive-fontsize";
 import { SearchBar, ListItem, Input } from "react-native-elements";
 import{Card,Header,Icon} from 'react-native-elements';
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 
 export default class BookRequestScreen extends React.Component{
@@ -185,7 +186,7 @@ export default class BookRequestScreen extends React.Component{
     
     render(){
         if (this.state.IsItemRequestActive === true){
-            return(
+            return(<SafeAreaProvider>
                 <View style={{ flex: 1}}>
                     <View
                         style={{
@@ -232,10 +233,10 @@ export default class BookRequestScreen extends React.Component{
                        
                 </View>
             </View>
-            )
+            </SafeAreaProvider>)
         }
         else{
-            return(
+            return(<SafeAreaProvider>
                 <View style={{flex:1}}>
                     <MyHeader title = "Add Item"  navigation = {this.props.navigation}/>
                     <KeyboardAvoidingView style={styles.keyBoardStyle}>
@@ -280,7 +281,7 @@ export default class BookRequestScreen extends React.Component{
                         </TouchableOpacity>   
                     </KeyboardAvoidingView>
                 </View>
-            );
+            </SafeAreaProvider>);
         }
     }
 }
